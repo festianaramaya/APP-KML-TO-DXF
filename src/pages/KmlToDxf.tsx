@@ -14,7 +14,7 @@ export default function KmlToDxf() {
   });
 
   const [totalFeatures, setTotalFeatures] = useState<number>(0);
-  const [mode, setMode] = useState<'route' | 'route_homepass'>('route_homepass');
+  const [mode, setMode] = useState<'route' | 'route_homepass'>('route');
   const [mitra, setMitra] = useState<'mitraA' | 'mitraB' | 'mitraC'>('mitraC');
 
   const handleFileChange = (type: ConversionType, file: File) => {
@@ -53,8 +53,16 @@ export default function KmlToDxf() {
     formData.append('tipeMitra', mitra);
 
     try {
-      const response = await fetch(`${API_BASE}/api/upload_kml`, { method: 'POST', body: formData });
-      if (!response.ok) throw new Error();
+      const response = await fetch(`${API_BASE}/api/upload_kml`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error("[Backend Error]:", errorText);
+        throw new Error(errorText || `HTTP ${response.status}`);
+      }
 
       const blob = await response.blob();
       const url = URL.createObjectURL(blob);
@@ -64,10 +72,18 @@ export default function KmlToDxf() {
       document.body.appendChild(a);
       a.click();
       a.remove();
+      URL.revokeObjectURL(url);
 
       setStatus(prev => ({ ...prev, [type]: { type: 'success', message: 'Sukses diunduh!' } }));
-    } catch {
-      setStatus(prev => ({ ...prev, [type]: { type: 'error', message: 'Gagal mengonversi file' } }));
+    } catch (err: any) {
+      console.error("[Error Detail]:", err);
+      setStatus(prev => ({
+        ...prev,
+        [type]: {
+          type: 'error',
+          message: err.message ? `Gagal: ${err.message}` : 'Gagal terhubung ke backend port 5000'
+        }
+      }));
     }
   };
 
