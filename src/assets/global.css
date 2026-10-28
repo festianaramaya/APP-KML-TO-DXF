@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --red: #e3000b;
+  --red-dark: #b80009;
+  --red-light: #fff1f2;
+  --font: 'Inter', sans-serif;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: var(--font);
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-icon-wrap {
+  width: 40px; 
+  height: 40px;
+  border-radius: 8px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.2rem;
+}
+
+.upload-zone {
+  border: 2px dashed #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8fafc;
+}
+
+.upload-zone:hover {
+  border-color: #e3000b;
+  background: #fff1f2;
+}
+
+.upload-zone.has-file {
+  border-style: solid;
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.spinner {
+  width: 13px; 
+  height: 13px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { 
+  to { transform: rotate(360deg); } 
+}
+
+@keyframes prog-anim { 
+  0% { width: 0%; } 
+  80% { width: 85%; } 
+  100% { width: 100%; } 
+}
+
+.prog-animate { 
+  animation: prog-anim 2s ease-out forwards; 
+}
+
+.garis-putih-berbayang { 
+  filter: drop-shadow(1.5px 1.5px 0px #000000) 
+          drop-shadow(-1.5px -1.5px 0px #000000) 
+          drop-shadow(1.5px -1.5px 0px #000000) 
+          drop-shadow(-1.5px 1.5px 0px #000000)
+          drop-shadow(0px 0px 4px rgba(0,0,0,0.8)); 
+}

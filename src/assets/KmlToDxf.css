@@ -1,0 +1,235 @@
+/* ============================================================
+   VALORA - KML TO DXF STYLESHEET
+   ============================================================ */
+
+/* --- Wrapper Utama (Rata Tengah) --- */
+.dxf-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dxf-inner-container {
+  width: 100%;
+  max-width: 1100px; /* Melebar dari sebelumnya */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Dropdown & Label */
+.dxf-form-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dxf-form-label span.required {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* Area Upload File KML */
+.upload-zone-dxf {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 40px 20px; /* Ditinggikan dari 24px */
+  text-align: center;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-zone-dxf:hover {
+  border-color: #94a3b8;
+  background-color: #f8fafc;
+}
+
+.upload-zone-dxf.has-file {
+  border-color: #10b981;
+  background-color: rgba(240, 253, 244, 0.7) !important;
+  border-style: solid;
+}
+
+.dxf-upload-icon {
+  color: #64748b;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dxf-upload-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e293b;
+  margin-top: 4px;
+}
+
+.dxf-upload-subtitle {
+  font-size: 12px;
+  color: #3b82f6;
+  margin-top: 4px;
+}
+
+/* --- Frame Preview Peta Leaflet --- */
+.dxf-map-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #e5e7eb;
+  border: 1px solid #cbd5e1;
+}
+
+/* --- Dropdown Pilih Mitra --- */
+.dxf-mitra-select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+  color: #1e293b;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.dxf-mitra-select:focus {
+  border-color: #3b82f6;
+}
+
+/* --- Options Container (Radio Mode) --- */
+.dxf-options-container {
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+/* Radio Button Options */
+.dxf-options-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.dxf-radio-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #475569;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.dxf-radio-card:hover {
+  border-color: #94a3b8;
+  background-color: #f8fafc;
+}
+
+.dxf-radio-card.active {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.dxf-radio-card input[type="radio"] {
+  display: none;
+}
+
+/* --- Tombol Submit (Style Metallik VALORA System) --- */
+.dxf-btn-convert {
+  width: 100%;
+  padding: 12px 24px;
+  min-height: 46px;
+  
+  /* Gradient Metallik Abu-Abu Keperakan */
+  background: linear-gradient(
+    90deg, 
+    #71717a 0%, 
+    #f4f4f5 45%, 
+    #ffffff 50%, 
+    #f4f4f5 55%, 
+    #71717a 100%
+  ) !important;
+  
+  color: #000000 !important;
+  font-family: "Inter", sans-serif;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.7);
+  
+  border-radius: 8px !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 0px 4px 0px #000000 !important;
+  
+  cursor: pointer;
+  transition: all 0.1s ease;
+  box-sizing: border-box;
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.dxf-btn-convert:hover:not(:disabled) {
+  background: linear-gradient(
+    90deg, 
+    #85858f 0%, 
+    #ffffff 50%, 
+    #85858f 100%
+  ) !important;
+}
+
+.dxf-btn-convert:active:not(:disabled) {
+  transform: translateY(3px) !important;
+  box-shadow: 0px 1px 0px #000000 !important;
+}
+
+.dxf-btn-convert:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: 0px 4px 0px #000000 !important;
+}
+
+/* --- Notifikasi Alert --- */
+.dxf-alert {
+  margin: 12px 0 0 0;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.dxf-alert.success {
+  background-color: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.dxf-alert.error {
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .dxf-options-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
